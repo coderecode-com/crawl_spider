@@ -25,6 +25,6 @@ class BooksCrawlSpider(CrawlSpider):
     def parse_item(self, response):
         yield {
             'Title': response.css('h1 ::text').get(),
-            'Category': response.xpath('//ul[@class="breadcrumb"]/li[last()-1]/a').get(),
+            'Category': response.xpath('//ul[@class="breadcrumb"]/li[last()-1]/a/text()').get(),
             'Link': response.url
         }
